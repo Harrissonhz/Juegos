@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaforo Loco</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .semaforo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Phase 1: Preview */
+        .preview-row {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 1rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .light-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #333;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .action-text {
+            font-size: 2rem;
+            font-weight: 600;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* Colors */
+        .red {
+            background-color: #ff4444;
+            box-shadow: 0 0 20px #ff4444;
+        }
+
+        .yellow {
+            background-color: #ffbb33;
+            box-shadow: 0 0 20px #ffbb33;
+        }
+
+        .green {
+            background-color: #00C851;
+            box-shadow: 0 0 20px #00C851;
+        }
+
+        /* Phase 2: Action */
+        #active-light-display {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .big-light {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        #phase-timer {
+            font-size: 5rem;
+            font-weight: 800;
+        }
+
+        #initial-msg {
+            font-size: 8rem;
+            font-weight: 800;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <a href="index.html" class="theme-toggle" aria-label="Volver">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1>Semaforo Loco</h1>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+            <!-- Icon initialized by JS -->
+        </button>
+    </header>
+
+    <main id="game-display" class="game-display">
+        <h2 id="initial-msg">Presiona Iniciar</h2>
+
+        <!-- Phase 1: Preview -->
+        <div id="preview-container" class="semaforo-container" style="display: none;">
+            <div class="preview-row">
+                <div class="light-circle red"></div>
+                <div class="action-text" id="text-red">...</div>
+            </div>
+            <div class="preview-row">
+                <div class="light-circle yellow"></div>
+                <div class="action-text" id="text-yellow">...</div>
+            </div>
+            <div class="preview-row">
+                <div class="light-circle green"></div>
+                <div class="action-text" id="text-green">...</div>
+            </div>
+            <h3 style="margin-top: 1rem;">¡Memoriza en <span id="preview-timer">10</span>s!</h3>
+        </div>
+
+        <!-- Phase 2: Action -->
+        <div id="active-light-display">
+            <div id="big-light" class="big-light"></div>
+            <div id="phase-timer"></div>
+        </div>
+    </main>
+
+    <div class="controls-container">
+        <div class="input-group">
+            <label for="interval-input">Tiempo Acción (seg):</label>
+            <input type="number" id="interval-input" min="1" max="10" value="3">
+        </div>
+        <button id="show-map-btn" class="btn secondary" style="display: none;">Mostrar</button>
+        <button id="start-btn" class="btn primary">Iniciar</button>
+        <button id="stop-btn" class="btn secondary" disabled>Parar</button>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/semaforo.js"></script>
+</body>
+
+</html>
