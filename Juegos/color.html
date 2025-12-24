@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salta al Color</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <a href="index.html" class="theme-toggle" aria-label="Volver">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1>Salta al Color</h1>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+            <!-- Icon initialized by JS -->
+        </button>
+    </header>
+
+    <main id="game-display" class="game-display">
+        <h2 id="game-text">Presiona Iniciar</h2>
+    </main>
+
+    <div class="controls-container">
+        <div class="input-group">
+            <label for="interval-input">Tiempo (1-5 seg):</label>
+            <input type="number" id="interval-input" min="1" max="5" value="2">
+        </div>
+        <button id="start-btn" class="btn primary">Iniciar</button>
+        <button id="stop-btn" class="btn secondary" disabled>Parar</button>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/color.js"></script>
+</body>
+
+</html>
